@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda de contato</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Agenda de contatos</h1>
+
+      <input
+        type="text"
+        v-model="searchText"
+        id="name"
+        placeholder="Entre com um nome"
+      />
+      <button v-on:click="getData()">Pegar dados</button>
+
+      <div v-if="listResult.length <= 0">Nenhum contato encontrado!</div>
+
+      <ul>
+        <address v-for="item, index in listResult">
+          <img v-bind:src="item.picture" alt="" /> <br />
+          {{item.firstName}} {{item.lastName}} <br />
+          Email: {{item.email}} <br />
+          {{item.city}}
+          <button v-on:click="removeContact(index)">Excluir</button>
+        </address>
+      </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
